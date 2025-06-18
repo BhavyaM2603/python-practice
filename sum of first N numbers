@@ -1,0 +1,39 @@
+Problem statement: Given a number ‘N’, find out the sum of the first N natural numbers.
+
+Examples:
+
+Example 1:
+Input: N=5
+Output: 15
+Explanation: 1+2+3+4+5=15
+
+#general method by taking i from 1 to n and updating sum
+def naturalnos(n):
+    sum=0
+    for i in range (1,n+1):
+        sum=sum+i
+    return sum
+        
+n=5
+sumofnumbers=naturalnos(n)
+print("sum of",n,"natural numbers is ",sumofnumbers)
+ 
+ #using forumla method
+def formula(n):
+    return n*(n+1)//2
+
+n=5
+totalsum=formula(n)
+print("sum of",n,"natural numbers using formula is",totalsum)
+    
+    
+#recursive method like yesterday examples
+def recursivefunc(i,n):
+    if i>n:
+        return 0
+        
+    return i+recursivefunc(i+1,n)
+n=5
+summation=recursivefunc(1,n)
+print("sum of",n,"natural numbers using recursion method is",summation)
+    
