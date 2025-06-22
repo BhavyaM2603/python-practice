@@ -1,0 +1,25 @@
+` Check if the given String is Palindrome or not
+EXPLANATION: we check the string using functional recursion where firstly, the letters on the two ends of the string (start, end) are compared to see if they’re the same or not.
+If they’re the same then we simply call recursion for the next elements (start+1, end-1) and so on until the start becomes greater than or equal to the end. 
+If at any point the start and the end differ, we return false stating that the string is not a palindrome.
+Otherwise, if the base condition is reached, then the string is obviously a palindrome and we return true. `
+
+ in python its easier to save even a numeric input as a string, so that base condition is same.
+
+
+def is_palindrome(s, start, end):
+    # Base case: if start >= end, it's a palindrome
+    if start >= end:
+        return True
+    # If characters don't match, not a palindrome
+    if s[start] != s[end]:
+        return False
+    # Recursive case: move inward
+    return is_palindrome(s, start + 1, end - 1)
+
+# Example usage
+word = "1231"
+if is_palindrome(word, 0, len(word) - 1):
+    print(word, "is a palindrome")
+else:
+    print(word, "is not a palindrome")
