@@ -1,0 +1,80 @@
+assume our linked list to be a horizontal stack where the operations like deletion and insertion would take place at the top of the stack or at the head of the linked list.
+ perform all the operations our head of the linked list would act as the top of the stack
+
+
+
+
+# Node class to create elements for the stack
+class Node:
+    def __init__(self, data):
+        self.data = data      # Holds the value
+        self.next = None      # Points to the next node in the stack
+
+
+# Stack class using linked list
+class Stack:
+    def __init__(self):
+        self.top = None       # Top of the stack (initially empty)
+
+    # Check if stack is empty
+    def isEmpty(self):
+        return self.top is None
+
+    # Push: Add item to top of stack
+    def push(self, value):
+        new_node = Node(value)    # Create a new node
+        new_node.next = self.top  # Link it to the current top
+        self.top = new_node       # Update top to new node
+
+    # Pop: Remove item from top of stack
+    def pop(self):
+        if self.isEmpty():
+            print("Stack is empty. Cannot pop.")
+            return None
+        popped = self.top.data
+        self.top = self.top.next  # Move top to next node
+        return popped
+
+    # Peek: View top item without removing
+    def peek(self):
+        if self.isEmpty():
+            print("Stack is empty.")
+            return None
+        return self.top.data
+
+    # Display the whole stack from top to bottom
+    def display(self):
+        if self.isEmpty():
+            print("Stack is empty.")
+            return
+        current = self.top
+        print("Stack (Top to Bottom):")
+        while current:
+            print(current.data)
+            current = current.next
+
+
+# --- Example Usage ---
+
+if __name__ == "__main__":
+    s = Stack()
+
+    # Push elements
+    s.push(10)
+    s.push(20)
+    s.push(30)
+
+    # Display stack
+    s.display()
+
+    # Peek at top
+    print("Top element:", s.peek())
+
+    # Pop one element
+    print("Popped:", s.pop())
+
+    # Display after popping
+    s.display()
+
+    # Check if empty
+    print("Is stack empty?", s.isEmpty())
